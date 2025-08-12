@@ -1,0 +1,26 @@
+# MacOS
+.DS_Store
+**/.DS_Store
+
+# Node
+node_modules
+**/node_modules
+
+# Locks
+package-lock.json
+**/package-lock.json
+
+# VSCode
+.vscode
+**/.vscode
+
+# Config files
+config.yml
+
+# CodeGPT
+.codegpt
+**/.codegpt
+
+# Shopify
+.shopify
+**/.shopify
