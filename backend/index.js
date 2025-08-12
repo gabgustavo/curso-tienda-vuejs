@@ -7,6 +7,8 @@ let portDB = process.env.PORT_DB || 27017;
 let hostDB = process.env.HOST_DB || '//localhost';
 let DBName = process.env.DB_NAME || 'tienda';
 
+const clienteRoutes = require('./routes/cliente');
+
 async function connectToDatabase() {
   try {
     await mongoose.connect(`mongodb:${hostDB}:${portDB}/${DBName}`, {
@@ -23,6 +25,8 @@ connectToDatabase();
 app.listen(port, () => { 
     console.log(`Server is running on port: ${port}`);    
 });
+
+app.use('/api', clienteRoutes);
 
 
 module.export = app;
