@@ -1,5 +1,6 @@
 const Usuario = require("../models/usuario");
 const bcrypt = require("bcryptjs");
+const jwt = require("../helpers/jwt");
 
 
 const registroUsuarioAdmin = async (req, res) => { 
@@ -34,6 +35,34 @@ const registroUsuarioAdmin = async (req, res) => {
     });
 }
 
+const loginUsuario = async (req, res) => { 
+    const dataReq = req.body;
+
+    const usuario = await Usuario.findOne({ email: dataReq.email });
+    if( !usuario ) {
+        return res.status(404).send({ message: 'Usuario o contraseña no son validos' });
+    }
+
+    const passValida = bcrypt.compareSync(dataReq.password, usuario.password);
+    if( !passValida ) {
+        return res.status(404).send({ message: 'Usuario o contraseña no son validos' });
+    }
+    const token = jwt.createToken(usuario);
+    res.status(200).send({
+        message: '',
+        token: token,
+        usuario: {
+            _id: usuario._id,
+            nombres: usuario.nombres,
+            apellidos: usuario.apellidos,
+            email: usuario.email,
+            rol: usuario.rol,
+            estado: usuario.estado
+        }
+    });
+}
+
 module.exports = {
-    registroUsuarioAdmin
+    registroUsuarioAdmin,
+    loginUsuario
 };
