@@ -9,7 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "bcrypt-nodejs": "^0.0.3",
+    "bcryptjs": "^3.0.2",
     "body-parse": "^0.1.0",
     "connect-multiparty": "^2.2.0",
     "express": "^5.1.0",
