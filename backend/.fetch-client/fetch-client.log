@@ -1,2 +1,12 @@
 
 13-Aug-2025 17:13:09  error::apiFetch(): Error: read ECONNRESET
+
+13-Aug-2025 17:41:33  error::apiFetch(): Error: read ECONNRESET
+
+13-Aug-2025 17:41:49  error::apiFetch(): Cancel: The request has been cancelled by the user.
+
+13-Aug-2025 17:46:11  error::apiFetch(): Cancel: The request has been cancelled by the user.
+
+13-Aug-2025 17:51:14  error::apiFetch(): Error: timeout of 300000ms exceeded
+
+13-Aug-2025 18:24:15  error::apiFetch(): TypeError [ERR_INVALID_HTTP_TOKEN]: Header name must be a valid HTTP token ["Authorizationñ"]

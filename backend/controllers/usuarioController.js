@@ -37,7 +37,7 @@ const registroUsuarioAdmin = async (req, res) => {
 
 const loginUsuario = async (req, res) => { 
     const dataReq = req.body;
-
+    
     const usuario = await Usuario.findOne({ email: dataReq.email });
     if( !usuario ) {
         return res.status(404).send({ message: 'Usuario o contraseña no son validos' });

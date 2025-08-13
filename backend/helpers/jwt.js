@@ -11,7 +11,7 @@ exports.createToken = (usuario) => {
         rol: usuario.rol,
         estado: usuario.estado,
         iat: moment().unix(),
-        exp: moment().add(1, 'days')
+        exp: moment().add(1, 'days').unix()
     };
 
     return jwt.encode(payload, secret);
