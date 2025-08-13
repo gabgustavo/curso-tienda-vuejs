@@ -5,8 +5,14 @@ const bcrypt = require("bcryptjs");
 const registroUsuarioAdmin = async (req, res) => { 
     const dataReq = req.body;
 
+    const usuarioExistente = await Usuario.find({ email: dataReq.email });
+    if (usuarioExistente.length > 0) {
+        return res.status(400).send({ message: 'El usuario ya existe' });
+    }    
+    
+
     /* bcrypt.hash(dataReq.password, 10, async (err, hash) => {
-        console.log('jmmmmmm');
+        console.log('jmmmmmm'); 
         
         if (err) {
             return res.status(400).send({ message: 'No se ha podido encriptar la contraseña' });
@@ -23,6 +29,7 @@ const registroUsuarioAdmin = async (req, res) => {
     usuario.password = undefined;    
 
     return res.status(201).send({
+        message: 'Usuario creado correctamente:-:',
         data: usuario
     });
 }

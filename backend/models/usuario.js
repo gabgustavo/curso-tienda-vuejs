@@ -22,6 +22,15 @@ const UsuarioSchema = Schema({
     password: {
         type: String,
         required: true,
+    },
+    estado: {
+        type: Boolean,
+        default: true,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
