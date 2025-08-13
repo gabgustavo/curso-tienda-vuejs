@@ -29,7 +29,7 @@ const registroUsuarioAdmin = async (req, res) => {
     usuario.password = undefined;    
 
     return res.status(201).send({
-        message: 'Usuario creado correctamente:-:',
+        message: 'Usuario creado correctamente',
         data: usuario
     });
 }
