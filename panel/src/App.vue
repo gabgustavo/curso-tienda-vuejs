@@ -1,17 +1,22 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-<!-- <SideBar /> -->
-<LoginApp />
-
-  <router-view/>
+  <template v-if="isLogged">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+    <SideBar /> 
+    <router-view/>
+    <h1>AAAAA</h1>
+  </template>
+  <template v-else>
+    <h1>BBBB</h1>
+      <router-view/>
+  </template>
 </template>
 
 <script setup>
-import SideBar from '@/components/SideBar.vue';
-import LoginApp from './views/LoginApp.vue';
+  import SideBar from '@/components/SideBar.vue';
+  const isLogged = !!localStorage.getItem('token');
 </script>
 
 <style>

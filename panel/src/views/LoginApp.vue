@@ -96,6 +96,9 @@
 }
 </style>
 <script>
+import { backendApi } from '@/api/backendApi';
+import { useRouter } from 'vue-router';
+
 export default {
     name: 'LoginApp',
     props: {},
@@ -107,8 +110,7 @@ export default {
         };
     },
     methods: {
-       onSubmit() {
-           console.log('Validating login credentials...');
+       async onSubmit() {
            if (!this.email) {
                this.msg_error = 'El Email es requerido.';
                return;
@@ -118,10 +120,26 @@ export default {
                 return;
             }
             if (this.email && this.password) {
-                // Simulate a successful login
-              this.msg_error = '';
-              console.log('Login successful for:', this.email);
-              // Redirect or perform further actions here
+                this.msg_error = '';
+
+                try {
+                   const { data } = await backendApi.post('/user-login', {
+                    email: this.email,
+                    password: this.password
+                   });
+                    console.log(data);
+                   localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.usuario));
+                    this.$router.push({ name: 'home' });
+                   
+                } catch (error) {                    
+                    if(error.status === 404) {
+                        this.msg_error = error.response.data.message;
+                        return;
+                    }
+                    
+                }
+                
            } 
         },
     },
