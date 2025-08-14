@@ -6,27 +6,29 @@
 
             <!-- Heading -->
             <h1 class="display-4 text-center mb-3">
-                Sign in
+                Iniciar sesión
             </h1>
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-                Free access to our dashboard.
+                Panel administrador
             </p>
 
             <!-- Form -->
-            <form>
+            <form @submit.prevent="onSubmit">
 
                 <!-- Email address -->
                 <div class="form-group">
 
                 <!-- Label -->
-                <label class="form-label">
-                    Email Address
+                <label class="form-label w-100 text-start">
+                    Correo electrónico
                 </label>
 
                 <!-- Input -->
-                <input type="email" class="form-control" placeholder="name@address.com">
+                <input v-model="email"
+                type="email" class="form-control" 
+                placeholder="name@address.com">
 
                 </div>
 
@@ -36,8 +38,8 @@
                     <div class="col">
 
                     <!-- Label -->
-                    <label class="form-label">
-                        Password
+                    <label class="form-label  w-100 text-start">
+                        Contraseña
                     </label>
 
                     </div>
@@ -45,7 +47,7 @@
 
                     <!-- Help text -->
                     <a href="password-reset-cover.html" class="form-text small text-muted">
-                        Forgot password?
+                        Olvídate la contraseña?
                     </a>
 
                     </div>
@@ -55,7 +57,10 @@
                 <div class="input-group input-group-merge">
 
                     <!-- Input -->
-                    <input class="form-control" type="password" placeholder="Enter your password">
+                    <input  v-model="password"
+                    class="form-control" 
+                    type="password" 
+                    placeholder="Enter your password">
 
                     <!-- Icon -->
                     <span class="input-group-text">
@@ -65,18 +70,16 @@
                 </div>
                 </div>
 
-                <!-- Submit -->
-                <button class="btn btn-lg w-100 btn-primary mb-3">
-                Sign in
-                </button>
-
-                <!-- Link -->
-                <div class="text-center">
-                <small class="text-muted text-center">
-                    Don't have an account yet? <a href="sign-up.html">Sign up</a>.
-                </small>
+                <div class="alert alert-danger" 
+                    :class="msg_error? 'animate__bounceIn': 'animate__fadeOut'" 
+                    role="alert" v-show="msg_error">
+                    {{ msg_error }}
                 </div>
 
+                <!-- Submit -->
+                <button class="btn btn-lg w-100 btn-primary mb-3" type="submit">
+                   Ingresar
+                </button>
             </form>
 
             </div>
@@ -94,7 +97,33 @@
 </style>
 <script>
 export default {
-  name: 'LoginApp',
-  props: {}
+    name: 'LoginApp',
+    props: {},
+    data() {
+        return {
+            email: '',
+            password: '',
+            msg_error: '',
+        };
+    },
+    methods: {
+       onSubmit() {
+           console.log('Validating login credentials...');
+           if (!this.email) {
+               this.msg_error = 'El Email es requerido.';
+               return;
+            }
+            if (!this.password) {
+                this.msg_error = 'La contraseña es requerida.';
+                return;
+            }
+            if (this.email && this.password) {
+                // Simulate a successful login
+              this.msg_error = '';
+              console.log('Login successful for:', this.email);
+              // Redirect or perform further actions here
+           } 
+        },
+    },
 }
 </script>
