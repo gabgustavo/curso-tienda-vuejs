@@ -3,13 +3,15 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-<SideBar />
+<!-- <SideBar /> -->
+<LoginApp />
 
   <router-view/>
 </template>
 
 <script setup>
-  import SideBar from '@/components/SideBar.vue';
+import SideBar from '@/components/SideBar.vue';
+import LoginApp from './views/LoginApp.vue';
 </script>
 
 <style>
