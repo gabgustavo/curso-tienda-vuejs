@@ -1,6 +1,7 @@
 <template>
   <template v-if="isLogged">
-    <SideBar /> 
+    <SideBar />
+    <notifications /> 
     <router-view/>
   </template>
   <template v-else>
