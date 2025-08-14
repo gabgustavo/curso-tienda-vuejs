@@ -7,6 +7,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+
   {
     path: '/auth',
     name: 'auth',
@@ -20,7 +21,22 @@ const routes = [
       }
 
     ]
+  },
+
+  {
+    path: '/collaborators',
+    name: 'collaborators',
+    redirect: { name: 'create' },
+    children: [
+      {
+        path: 'create',
+        name: 'create',
+        component: () => import('@/views/colaboradores/CreateColaboradorApp.vue')
+      }
+
+    ]
   }
+
 ]
 
 const router = createRouter({

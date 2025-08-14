@@ -9,7 +9,7 @@
     
         <!-- Brand -->
         <RouterLink class="navbar-brand" to="/">
-          <img src="assets/img/logo.svg"
+          <img src="/assets/img/logo.svg"
            class="navbar-brand-img mx-auto" alt="...">
         </RouterLink>
     
@@ -22,7 +22,7 @@
             <!-- Toggle -->
             <RouterLink  to="/" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="avatar avatar-sm avatar-online">
-                <img src="assets/img/avatars/profiles/avatar-1.jpg"
+                <img src="/assets/img/avatar-1.jpg"
                  class="avatar-img rounded-circle" alt="...">
               </div>
             </RouterLink>
@@ -111,7 +111,7 @@
                 <RouterLink  to="/"
                  class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar avatar-sm avatar-online">
-                    <img src="assets/img/avatars/profiles/avatar-1.jpg"
+                    <img src="/assets/img/avatar-1.jpg"
                      class="avatar-img rounded-circle" alt="...">
                   </div>
                 </RouterLink>

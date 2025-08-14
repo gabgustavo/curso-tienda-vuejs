@@ -8,45 +8,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="<%= BASE_URL %>assets/favicon/favicon.ico" type="image/x-icon" />
 
-    <style>
-      @font-face {
-        font-family: "Cerebri Sans";
-        font-style: normal;
-        font-weight: 400;
-        src: url("assets/fonts/cerebrisans/cerebrisans-regular.woff") format("woff"),
-          url("assets/fonts/cerebrisans/Cerebri-Sans-Regular.woff2") format("woff2");
-      }
-
-      @font-face {
-        font-family: "Cerebri Sans";
-        font-style: normal;
-        font-weight: 500;
-        src: url("assets/fonts/cerebrisans/cerebrisans-medium.woff") format("woff"),
-          url("assets/fonts/cerebrisans/Cerebri-Sans-Medium.woff2") format("woff2");
-      }
-
-      @font-face {
-        font-family: "Cerebri Sans";
-        font-style: normal;
-        font-weight: 600;
-        src: url("assets/fonts/cerebrisans/cerebrisans-semibold.woff") format("woff"),
-          url("assets/fonts/cerebrisans/Cerebri-Sans-SemiBold.woff2") format("woff");
-      }
-
-      @font-face {
-        font-family: "Feather";
-        font-style: normal;
-        font-weight: 400;
-        src: url("assets/fonts/feather/feather-webfont.woff") format("woff"),
-          url("assets/fonts/feather/feather-webfont.woff2") format("woff2");
-      }
-
-      /* * {
-            font-family: "Cerebri Sans", sans-serif !important;
-            font-weight: 400;
-          } */
-    </style>
-
     <!-- Map CSS -->
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
 
@@ -57,6 +18,17 @@
     <link rel="stylesheet" href="<%= BASE_URL %>assets/css/theme.bundle.css" id="stylesheetLight" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+    <style>
+      .avatar-offline .avatar-img,
+      .avatar-online .avatar-img {
+        -webkit-mask-image: none;
+      }
+
+      /* * {
+        font-family: "Cerebri Sans", sans-serif !important;
+        font-weight: 400;
+      } */
+    </style>
     <title>
       <%= htmlWebpackPlugin.options.title %>
     </title>
