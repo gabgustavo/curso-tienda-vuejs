@@ -3,8 +3,14 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
+<SideBar />
+
   <router-view/>
 </template>
+
+<script setup>
+  import SideBar from '@/components/SideBar.vue';
+</script>
 
 <style>
 #app {
