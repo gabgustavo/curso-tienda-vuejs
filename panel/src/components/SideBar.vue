@@ -85,8 +85,8 @@
               </div>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link " to="./widgets.html">
-                <i class="fe fe-grid"></i> Widgets
+              <RouterLink class="nav-link " :to="{name: 'user-list' }">
+                <i class="fe fe-user"></i> Colaboradores
               </RouterLink>
             </li>
           </ul>

@@ -33,15 +33,10 @@
                                         <!-- Nav -->
                                         <ul class="nav nav-tabs nav-overflow header-tabs">
                                             <li class="nav-item">
-                                                <a href="account-general.html" class="nav-link active">
-                                                    Todos los colaboradores
-                                                </a>
+                                                <router-link :to="{name:'user-list'}" class="nav-link">Nuevo colaborador</router-link>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="account-billing.html" class="nav-link">
-                                                    Nuevo colaborador
-                                                </a>
-
+                                                <a class="nav-link active">Nuevo colaborador</a>
                                             </li>
 
                                         </ul>
@@ -196,6 +191,7 @@ export default {
                     type: 'success',
                 });
                 this.colaborador = {};
+                this.$router.push({ name: 'user-list' });
                 
                 
             } catch (error) {                

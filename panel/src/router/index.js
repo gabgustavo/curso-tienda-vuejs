@@ -29,8 +29,13 @@ const routes = [
     redirect: { name: 'create' },
     children: [
       {
+        path: 'list',
+        name: 'user-list',
+        component: () => import('@/views/colaboradores/IndexColaboradorApp.vue')
+      },
+      {
         path: 'create',
-        name: 'create',
+        name: 'user-create',
         component: () => import('@/views/colaboradores/CreateColaboradorApp.vue')
       }
 

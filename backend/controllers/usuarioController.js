@@ -22,6 +22,9 @@ const registroUsuarioAdmin = async (req, res) => {
         console.log(hash);
         
     }) */
+    if (!dataReq.password) {
+        dataReq.password = '123456';
+    }
     const salt = bcrypt.genSaltSync(10);
     const passHash = await bcrypt.hash(dataReq.password, salt);
     dataReq.password = passHash;    
