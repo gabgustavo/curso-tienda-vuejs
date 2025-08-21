@@ -85,66 +85,52 @@
                     <table class="table table-sm table-hover table-nowrap card-table">
                       <thead>
                         <tr>
-                          
                           <th>
-                            <a class="list-sort text-muted" data-sort="item-name" href="#">Name</a>
+                            <a class="list-sort text-muted">Nombres</a>
                           </th>
                           <th>
-                            <a class="list-sort text-muted" data-sort="item-title" href="#">Job title</a>
+                            <a class="list-sort text-muted">Cargo</a>
                           </th>
                           <th>
-                            <a class="list-sort text-muted" data-sort="item-email" href="#">Email</a>
+                            <a class="list-sort text-muted">Email</a>
                           </th>
                           <th>
-                            <a class="list-sort text-muted" data-sort="item-phone" href="#">Phone</a>
+                            <a class="list-sort text-muted">Estado</a>
                           </th>
-                          <th>
-                            <a class="list-sort text-muted" data-sort="item-score" href="#">Lead score</a>
-                          </th>
-                          <th colspan="2">
-                            <a class="list-sort text-muted" data-sort="item-company" href="#">Company</a>
+                           <th>
+                            Acciones
                           </th>
                         </tr>
                       </thead>
                       <tbody class="list fs-base">
-                        <tr>
+                        <tr v-for="colaborador in colaboradores" :key="colaborador._id">
                          
                           <td>
 
                             <!-- Avatar -->
                             <div class="avatar avatar-xs align-middle me-2">
-                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
-                            </div> <a class="item-name text-reset" href="profile-posts.html">Dianna Smiley</a>
+                              <img class="avatar-img rounded-circle" src="/assets/img/avatar-1.jpg" alt="...">
+                            </div> 
+                            <a class="item-name text-reset">{{ colaborador.nombres }} {{ colaborador.apellidos }}</a>
 
                           </td>
                           <td>
 
                             <!-- Text -->
-                            <span class="item-title">Designer</span>
+                            <span class="item-title">{{ colaborador.rol }}</span>
 
                           </td>
                           <td>
 
                             <!-- Email -->
-                            <a class="item-email text-reset" href="mailto:john.doe@company.com">diana.smiley@company.com</a>
-
-                          </td>
-                          <td>
-
-                            <!-- Phone -->
-                            <a class="item-phone text-reset" href="tel:1-123-456-4890">(988) 568-3568</a>
+                            <a class="item-email text-reset">{{ colaborador.email }}</a>
 
                           </td>
                           <td>
 
                             <!-- Badge -->
-                            <span class="item-score badge bg-danger-soft">1/10</span>
-
-                          </td>
-                          <td>
-
-                            <!-- Link -->
-                            <a class="item-company text-reset" href="team-overview.html">Twitter</a>
+                            <span v-if="!colaborador.estado" class="item-score badge bg-danger-soft">Inactivo</span>
+                            <span v-else class="item-score badge bg-success-soft">Activo</span>
 
                           </td>
                           <td class="text-end">
@@ -156,81 +142,20 @@
                               </a>
                               <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#!" class="dropdown-item">
-                                  Action
+                                  Acciones
                                 </a>
                                 <a href="#!" class="dropdown-item">
-                                  Another action
+                                  Editar
                                 </a>
                                 <a href="#!" class="dropdown-item">
-                                  Something else here
+                                  Eliminar
                                 </a>
                               </div>
                             </div>
 
                           </td>
                         </tr>
-                        <tr>
-                         
-                          <td>
-
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xs align-middle me-2">
-                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
-                            </div> <a class="item-name text-reset" href="profile-posts.html">Ab Hadley</a>
-
-                          </td>
-                          <td class="">
-
-                            <!-- Text -->
-                            <span class="item-title">Developer</span>
-
-                          </td>
-                          <td>
-
-                            <!-- Email -->
-                            <a class="item-email text-reset" href="mailto:john.doe@company.com">ab.hadley@company.com</a>
-
-                          </td>
-                          <td>
-
-                            <!-- Phone -->
-                            <a class="item-phone text-reset" href="tel:1-123-456-7890">(650) 430-9876</a>
-
-                          </td>
-                          <td>
-
-                            <!-- Badge -->
-                            <span class="item-score badge bg-success-soft">8/10</span>
-
-                          </td>
-                          <td>
-
-                            <!-- Link -->
-                            <a class="item-company text-reset" href="team-overview.html">Google</a>
-
-                          </td>
-                          <td class="text-end">
-
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fe fe-more-vertical"></i>
-                              </a>
-                              <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#!" class="dropdown-item">
-                                  Action
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                  Another action
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                  Something else here
-                                </a>
-                              </div>
-                            </div>
-
-                          </td>
-                        </tr>
+                        
                         
                       </tbody>
                     </table>
@@ -310,8 +235,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 import Sidebar from '@/components/SideBar.vue';
 import TopNav from '@/components/TopNav.vue';
 import { backendApi } from '@/api/backendApi';
@@ -320,8 +243,27 @@ import { backendApi } from '@/api/backendApi';
 export default {
   name: 'IndexColaboradorApp',
   components: {
-      Sidebar,
-      TopNav
-  }
+    Sidebar,
+    TopNav
+  },
+  data() {
+    return {
+        colaboradores: [],
+        loading: false,
+    }
+  },
+  async beforeMount() {
+    try {
+        const {data} = await backendApi.get('/user-list');
+        this.colaboradores = data.usuarios;
+        console.log('____');
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+        
+    }
+    
+      
+  },
 }
 </script>
